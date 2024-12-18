@@ -52,10 +52,11 @@ const styles = StyleSheet.create({
   },
   item: {
     flex: 1/3,
-    // margin: 4,
-    // backgroundColor: "#fff",
+    margin : 10,
+    backgroundColor: "#fff",
     padding: 10,
     marginVertical: 5,
+    // marginHorizontal: 5,
     borderRadius: 8,
     shadowColor: "#000",
     shadowOpacity: 0.1,
