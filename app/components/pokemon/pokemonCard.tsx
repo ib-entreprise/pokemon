@@ -9,7 +9,7 @@ type Props = {
 
 export default function PokemonCard({id,name}: Props) {
   return (     
-     <Link href={{ pathname:'/components/pokemon/id' , params:{'id': id} }}  style={styles.card} asChild>
+     <Link href={{ pathname:'/components/pokemon/[id].tsx' , params:{'id': id} }}  style={styles.card} asChild>
      <Pressable>
           <Card>
                <Text style={styles.text}>#{id} </Text>
@@ -44,7 +44,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     margin:4,
     borderRadius:8,
-    
 }
 
   
