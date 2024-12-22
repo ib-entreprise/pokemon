@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { Text, View, Image, StyleSheet, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import HeaderText from "./components/headerText";
@@ -6,11 +7,35 @@ import Card from "./components/card"; // Assurez-vous que le chemin est correct
 import PokemonCard from "./components/pokemon/pokemonCard";
 
 export default function Index() {  
-  const pokemons = Array.from({ length: 37 }, (_, k) => ({
-    name: `Pokemon name ${k + 1}`,
-    id: k + 1,
-  }));
 
+  const [pokemons, setPokemons] = useState([]);
+  const [loading, setLoading] = useState(true);
+   useEffect(() => {
+    // Récupère les données de l'API PokéAPI
+    const fetchPokemons = async () => {
+      try {
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=37");
+        const data = await response.json();
+        const formattedPokemons = data.results.map((pokemon, index) => ({
+          name: pokemon.name,
+          id: index + 1,
+        }));
+        setPokemons(formattedPokemons);        
+            setLoading(false);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des Pokémon :", error);      
+          setLoading(false);
+      }
+    };
+    fetchPokemons();
+  }, []);
+  if (loading) {
+    return (
+      <SafeAreaView >
+        <Text >Chargement...</Text>
+      </SafeAreaView>
+    );
+  }
   return (
       <SafeAreaView
       style={{

@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Card({ children }) {
   return <View style={styles.body}>{children}</View>;
-}
+} 
 
 const styles = StyleSheet.create({
   body: {

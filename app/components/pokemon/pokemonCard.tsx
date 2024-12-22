@@ -7,17 +7,17 @@ type Props = {
 };
 
 export default function PokemonCard({id,name}: Props) {
-  return (
-    <Card>
-      <Text style={styles.text}>#{id} </Text>
-      <Image
-        source={{
-          uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
-        }}
-        style={styles.image}
-      />
-      <Text style={styles.text}>{name}</Text>
-    </Card>
+  return (     
+          <Card>
+               <Text style={styles.text}>#{id} </Text>
+               <Image
+               source={{
+                    uri: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`,
+               }}
+               style={styles.image}
+               />
+               <Text style={styles.text}>{name}</Text>
+          </Card>
   );
 }
 
