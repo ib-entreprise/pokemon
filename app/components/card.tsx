@@ -7,14 +7,14 @@ export default function Card({ children }) {
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: "#fff",
+    // backgroundColor: "#fff",
     flex: 1,
-    padding: 10,
+    padding: 4,
     borderRadius: 8,
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 3,
-    marginVertical: 10,
+    // marginVertical: 4,
   },
 });

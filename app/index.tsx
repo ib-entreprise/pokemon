@@ -5,12 +5,17 @@ import HeaderText from "./components/headerText";
 import Card from "./components/card"; // Assurez-vous que le chemin est correct
 // import PokemonCard from "./pokemon/card"; // Vérifiez que ce chemin est également correct
 import PokemonCard from "./components/pokemon/pokemonCard";
+import { SearchBar } from "./components/searchbar";
 
 export default function Index() {  
 
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
-   useEffect(() => {
+  const [search, setSearch] = useState('');
+const filteredPokemons = search
+  ? pokemons.filter((p) => p.name.toLowerCase().includes(search.toLowerCase())): pokemons; 
+  
+  useEffect(() => {
     // Récupère les données de l'API PokéAPI
     const fetchPokemons = async () => {
       try {
@@ -51,9 +56,11 @@ export default function Index() {
         />
         <HeaderText />
       </View>
+      {/* // searchbar  */}             
+      <SearchBar value={search} onChange={setSearch}></SearchBar>             
       <Card>
         <FlatList
-          data={pokemons}
+          data={filteredPokemons}
           keyExtractor={(item) => item.id.toString()}
           numColumns={3}
           renderItem={({ item }) => (
@@ -75,10 +82,9 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
   },
-  item: {
-    flex: 1/3,
-    margin : 10,
-    backgroundColor: "#fff",
+  item: {    
+    margin : 4,
+    // backgroundColor: "#fff",
     padding: 10,
     marginVertical: 5,
     // marginHorizontal: 5,
